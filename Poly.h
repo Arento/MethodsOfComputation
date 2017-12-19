@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <iosfwd>
+#include <functional>
 
 class Poly {
   public:
@@ -9,7 +10,7 @@ class Poly {
   Poly() = default;
   explicit Poly(double zeroCoef);
   explicit Poly(double zeroCoef, double firstCoef);
-  double operator()(double val);
+  virtual double operator()(double val) const;
   Poly operator*(const Poly& op) const;
   Poly operator+(const Poly& op) const;
   Poly operator-(const Poly& op) const;

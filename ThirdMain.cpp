@@ -4,15 +4,15 @@
 #include <functional>
 
 void solve(const std::vector<double>& xs, const std::vector<double>& ys, double h, uint32_t n, double x, const std::function<double(double)>& f) {
-    auto nf = newtonForward(xs, ys, h, n)(x);
-    auto nb = newtonBackward(xs, ys, h, n)(x);
-    auto ga = gauss(xs, ys, h, n)(x);
+    auto nf = newtonForward_equidistant(xs, ys, h, n)(x);
+    auto nb = newtonBackward_equidistant(xs, ys, h, n)(x);
+    auto ga = gauss_equidistant(xs, ys, h, n)(x);
     auto real = f(x);
     std::cout << "\n"
               << "real  " << real << "\n"
               << "forw  " << nf << "\n"
               << "back  " << nb << "\n"
-              << "gauss " << ga << "\n";
+              << "gauss_equidistant " << ga << "\n";
     std::cout << "Forward Newton  absolute error: " << std::fabs(real - nf) << "\n";
     std::cout << "Backward Newton absolute error: " << std::fabs(real - nb) << "\n";
     std::cout << "Gauss           absolute error: " << std::fabs(real - ga) << "\n";

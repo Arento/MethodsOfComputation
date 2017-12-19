@@ -13,7 +13,7 @@ Poly::Poly(double zeroCoef, double firstCoef) {
     reduceZeros();
 }
 
-double Poly::operator()(double val) {
+double Poly::operator()(double val) const {
     double x = 1;
     double sum = 0;
     for (auto coef : coefs) {
